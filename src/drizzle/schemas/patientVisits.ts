@@ -6,7 +6,7 @@ import { patient } from "./patient";
 export const patientVisit = pgTable('patient_visit', {
 
     id:serial('id').primaryKey(),
-    patient_id: integer ('patient_id').notNull(),
+    patientId: integer ('patient_id').notNull(),
     reason: text ('reason').notNull(),
     visitDate: date('visit_date').notNull(),
     diagnosis: text('diagnosis').notNull(),
@@ -17,7 +17,7 @@ export const patientVisit = pgTable('patient_visit', {
 
 export const patientVisitRelation = relations(patientVisit, ({one})=>({
     patient:one(patient, {
-        fields:[patientVisit.patient_id],
+        fields:[patientVisit.patientId],
         references:[patient.id]
     })
 }))
